@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>MULTI NETWORKS SERVICES</title>
+     
+    </head>
+    <body>
+        
+        <h1>MULTI NETWORKS SERVICES</h1><br>
+        <h1>WELCOME YOU!</h1>
+        
+        
+      <div id="xecurrencywidget"></div>
+<script>var xeCurrencyWidget = {"domain":"localhost","language":"en","size":"normal"};</script>
+<script src="https://www.xe.com/syndication/currencyconverterwidget.js"></script>
+        
+        
+        USD              :<input type="text" id= "usd"><br>
+        Rate             :<input type="text" id= "rate"><br>
+        Int. Rate        :<input type="text" id= "arate"><br>
+        Int. To Usd Rate :<input type="text" id= "aurate"><br>
+        Route Rate India :<input type="text" id= "rratei"><br>
+        Route Rate Int.  :<input type="text" id= "rrateu"><br>
+        
+        <br>
+            <input type ="button" onclick="Check()" value="Check">
+        <br>
+            <div id="output"></div>
+            
+            <div id="output2"></div>
+            <div id="output3"></div>
+        <script>
+            
+            var output = document.getElementById("output");
+            var output3 = document.getElementById("output3");
+            var output2 = document.getElementById("output2");
+            var usd = document.getElementById("usd");
+            var rate = document.getElementById("rate");
+            var arate = document.getElementById("arate");
+            var aurate = document.getElementById("aurate");
+            var rratei = document.getElementById("rratei");
+            var rrateu = document.getElementById("rrateu");
+            usd.value= 1;
+            aurate.value= 3.67;
+            rratei.value= "0.00";
+            rrateu.value= "0.00";
+            var aedusd = (rate.value/arate.value/3.67);
+        
+        function Check(){
+            outc(usd.value,rratei.value,"/",function(a,b){
+                return a/b;
+                })
+          /*  outi(rate.value,arate.value,"/",function(a,b){
+                var aedusd = (a/b/3.67);  
+                return a/b/3.67;    
+                
+                })
+           */
+            
+            outm(rate.value,arate.value,aurate.value,rrateu.value,"/",function(a,b,c,d){
+                return a/b/c/d;
+            })
+            
+           
+            
+        }
+             
+        
+        function outc(a,b,s,cback){
+            var result = cback(Number(a),Number(b));
+            output.innerHTML ="Get "+result.toFixed(4) + "min in "+ usd.value +" $ By Local Supplier"+ "<br>";
+            return result
+        }
+       /*      function outi(a,b,s,cback){
+            var result = cback(Number(a),Number(b));
+            output1.innerHTML = "Get "+result.toFixed(4) + " $ in  "+ usd.value +" $"+ "<br>";
+        }
+        
+        */
+             function outm(a,b,c,d,s,cback){
+            var result = cback(Number(a),Number(b),Number(c),Number(d));
+            
+            output2.innerHTML = "Get "+result.toFixed(4) + "min in "+ usd.value +" $ By international Supplier"+ "<br>";
+            
+        }
+        
+    
+        
+        </script>
+    </body>
+</html>
