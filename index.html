@@ -10,8 +10,9 @@
         <h1>MULTI NETWORKS SERVICES</h1><br>
         <h1>WELCOME YOU!</h1>
         
-        <a href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=INR">USD to INR</a>
-        <a href="https://www.xe.com/currencytables/">XE Interactive Currency Table</a>
+        <a href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=INR">USD to INR</a><br>
+       <a href="https://www.xe.com/crm/">XE Currency Rate Monitor</a><br>
+        <script language="javascript" src="http://www.xe.com/pca/link.php"></script><noscript><a href="http://www.xe.com/pca/input.cgi" target="_blank">XE Personal Currency Assistant</a></noscript>
           
         
         USD              :<input type="text" id= "usd"><br>
@@ -87,83 +88,6 @@
         </script>
         
         
-   <select name='currencies'>
-    <option value='AED' title='United Arab Emirates Dirham'>AED</option>
-    <option value='AFN' title='Afghan Afghani'>AFN</option>
-    <option value='ALL' title='Albanian Lek'>ALL</option>
-    <option value='AMD' title='Armenian Dram'>AMD</option>
-    <option value='ANG' title='Netherlands Antillean Guilder'>ANG</option>
-    [...]
-  </select>
-        // set endpoint and your access key
-endpoint = 'live'
-access_key = '981a56b86e589d7955d3fc7d2eea52f2';
-
-// get the most recent exchange rates via the "live" endpoint:
-$.ajax({
-    url: 'https://apilayer.net/api/' + endpoint + '?access_key=' + access_key,   
-    dataType: 'jsonp',
-    success: function(json) {
-
-        // exchange rata data is stored in json.quotes
-        alert(json.quotes.USDGBP);
-        
-        // source currency is stored in json.source
-        alert(json.source);
-        
-        // timestamp can be accessed in json.timestamp
-        alert(json.timestamp);
-        
-    }
-});
-        // set endpoint and your access key
-endpoint = 'convert';
-access_key = '981a56b86e589d7955d3fc7d2eea52f2';
-
-// define from currency, to currency, and amount
-from = 'EUR';
-to = 'GBP';
-amount = '10';
-
-// execute the conversion using the "convert" endpoint:
-$.ajax({
-    url: 'https://apilayer.net/api/' + endpoint + '?access_key=' + access_key +'&from=' + from + '&to=' + to + '&amount=' + amount,   
-    dataType: 'jsonp',
-    success: function(json) {
-
-        // access the conversion result in json.result
-        alert(json.result);
-                
-    }
-});
-        
-        
-        <table>
-   <thead>
-      <tr>
-         <th>Code</th>
-         <th>Name</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td>AED</td>
-         <td>United Arab Emirates Dirham</td>
-      </tr>
-      <tr>
-         <td>AFN</td>
-         <td>Afghan Afghani</td>
-      </tr>
-      <tr>
-         <td>ALL</td>
-         <td>Albanian Lek</td>
-      </tr>
-      <tr>
-         <td>AMD</td>
-         <td>Armenian Dram</td>
-      </tr>
-      [...]
-   </tbody>
-</table>       
+   
     </body>
 </html>
