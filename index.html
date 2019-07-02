@@ -3,17 +3,6 @@
     
     <head>
         <title>MULTI NETWORKS SERVICES</title>
-	    <nav itemtype="https://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" class="ast-flex-grow-1" role="navigation" aria-label="Site Navigation"><div class="main-navigation"><ul id="primary-menu" class="main-header-menu ast-flex ast-justify-content-flex-end submenu-with-border"><li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-902 current_page_item menu-item-24"><a href="https://multivoip.github.io/kps/">Home</a></li>
-<li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="https://multivoip.github.io/kps/">Services</a></li>
-<li id="menu-item-20" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20"><a href="http://multinetworks.ml/contact/">Contact</a></li>
-			<li class="ast-masthead-custom-menu-items widget-custom-menu-item">
-				<div class="ast-header-widget-area"><aside id="text-5" class="widget widget_text">			<div class="textwidget"><p><span style="font-size: 1.2em;"><a href="tel:#"><strong>+971-505055372</strong></a></span></p>
-<p><a href="mailto:sales@multinetworks.ml">sales@multinetworks.ml</a></p>
-<div id="selenium-highlight"></div>
-<div id="selenium-highlight"></div>
-</div>
-		</aside></div>			</li>
-			</ul></div></nav>
 		  
 		<style>
 		body{
@@ -51,9 +40,9 @@ p {
         
         <a  style="margin-left: 30px;color: #250d33"href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=INR">USD to INR</a><br>
        <a style="margin-left: 30px;color: #250d33"href="https://www.xe.com/crm/">XE Currency Rate Monitor</a>
-        
-        <!-- Currency Converter Script - FxExchangeRate.com  --><div style="align:right;margin-left: 30px;width:248px;height:auto;border:1px solid #2D6AB4;text-align:center;font-size:16px;font-family:sans-serif,Arial,Helvetica;border-top-right-radius:5px; border-top-left-radius:5px;background-color:#FFFFFF;"><div style="width:100%; height:24px;padding:5px 0px 0px 0px;background-color:#2D6AB4;font-weight:bold;"><a rel="nofollow" style="color:#FFFFFF;text-decoration:none;" href="https://www.fxexchangerate.com/">Currency Converter</a></div><script type="text/javascript" src="https://w.fxexchangerate.com/converter.php?fm=USD&ft=INR&lg=en&am=1&ty=1"></script></div><br><!--  End of Currency Converter Script -  FxExchangeRate.com -->
-          
+     
+   /*     <!-- Currency  Converter Script - FxExchangeRate.com  --><div style="align:right;margin-left: 30px;width:248px;height:auto;border:1px solid #2D6AB4;text-align:center;font-size:16px;font-family:sans-serif,Arial,Helvetica;border-top-right-radius:5px; border-top-left-radius:5px;background-color:#FFFFFF;"><div style="width:100%; height:24px;padding:5px 0px 0px 0px;background-color:#2D6AB4;font-weight:bold;"><a rel="nofollow" style="color:#FFFFFF;text-decoration:none;" href="https://www.fxexchangerate.com/">Currency Converter</a></div><script type="text/javascript" src="https://w.fxexchangerate.com/converter.php?fm=USD&ft=INR&lg=en&am=1&ty=1"></script></div><br><!--  End of Currency Converter Script -  FxExchangeRate.com -->
+      */ 
         <table >
             <style>
             input.box {
@@ -81,14 +70,16 @@ p {
         <br>
             <input style="height:50px;width: 350px;font-size: 30px " type ="button" onclick="Check()" value="Check">
         <br>
-            <div style="height:30px" id="output"></div>
-            <div style="height:30px" id="output2"></div>
-            <div style="height:30px" id="output3"></div>
+            <div style="height:40px; font-size: 30px" id="output"></div>
+            <div style="height:40px; font-size: 30px" id="output2"></div>
+            <div style="height:40px; font-size: 30px" id="output3"></div>
+			<div style="height:40px; font-size: 30px" id="output4"></div>
         <script>
             
             var output = document.getElementById("output");
             var output3 = document.getElementById("output3");
             var output2 = document.getElementById("output2");
+			var output4 = document.getElementById("output2");
             var usd = document.getElementById("usd");
             var rate = document.getElementById("rate");
             var arate = document.getElementById("arate");
@@ -97,47 +88,47 @@ p {
             var rrateu = document.getElementById("rrateu");
             usd.value= 1;
             aurate.value= 3.67;
-            rratei.value= "0.00";
-            rrateu.value= "0.00";
+            rratei.value= "0.0";
+            rrateu.value= "0.0";
             var aedusd = (rate.value/arate.value/3.67);
+			
         
         function Check(){
             outc(usd.value,rratei.value,"/",function(a,b){
                 return a/b;
                 })
-          /*  outi(rate.value,arate.value,"/",function(a,b){
-                var aedusd = (a/b/3.67);  
-                return a/b/3.67;    
-                
-                })
-           */
-            
+                      
             outm(rate.value,arate.value,aurate.value,rrateu.value,"/",function(a,b,c,d){
                 return a/b/c/d;
-            })
-            
-           
-            
+				})
+				
+            output3.innerHTML=outn(usd.value,rratei.value,rate.value,arate.value,aurate.value,rrateu.value);
+		
+			           
         }
              
         
-        function outc(a,b,s,cback){
+			function outc(a,b,s,cback){
             var result = cback(Number(a),Number(b));
             output.innerHTML ="Get "+result.toFixed(4) + "min in "+ usd.value +" $ By Local Supplier"+ "<br>";
             return result
-        }
-       /*      function outi(a,b,s,cback){
-            var result = cback(Number(a),Number(b));
-            output1.innerHTML = "Get "+result.toFixed(4) + " $ in  "+ usd.value +" $"+ "<br>";
-        }
-        
-        */
+			}
+       
              function outm(a,b,c,d,s,cback){
             var result = cback(Number(a),Number(b),Number(c),Number(d));
             
-            output2.innerHTML = "Get "+result.toFixed(4) + "min in "+ usd.value +" $ By international Supplier"+ "<br>";
-            
-        }
+            output2.innerHTML = "Get "+result.toFixed(4) + "min in "+ usd.value +" $ By international Supplier"+ "<br>"; 
+			}
+		
+			function outn(a,b,c,d,e,f){
+				var result = (a/b)-(c/d/e/f);
+					if (result>0){return ("Loss of "+ result.toFixed(4) + " min");}
+					if (result<0){return ("Profit of "+ (result.toFixed(4)*(-1)) + " min");}
+				return "Same";
+			}
+			
+			
+			
             </script>
         
      
