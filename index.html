@@ -91,7 +91,7 @@ p {
             aurate.value= 3.67;
             rratei.value= "0.0";
             rrateu.value= "0.0";
-			
+			window.onload= getfxexchangerate();
         
         function Check(){
 			
@@ -106,7 +106,7 @@ p {
            output3.innerHTML=outn(usd.value,rratei.value,rate.value,arate.value,aurate.value,rrateu.value);
 		
 			pcolor(output3.innerHTML);     
-			getfxexchangerate();
+			
         }
              
         
