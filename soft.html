@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>MULTI NETWORKS SERVICES</title>
+		  
+		<style>
+		body{
+		background-image: url("background1.jpg");
+		background-repeat: no-repeat, repeat;
+		background-color: #cccccc;
+		
+	height: 95%; /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+}
+h1 {
+  color: #1a2e7d;
+  margin-left: 30px;
+  text-align:center;
+    font-family: 'Orienta', sans-serif;
+}
+p {
+  color: red;
+
+  margin-left: 30px;
+    
+ }
+
+            
+
+       </style>
+     
+    </head>
+    <body>
+        
+        <h1>MULTI NETWORKS SERVICES</h1><br>
+        <h1>WELCOME YOU!</h1>
+        
+        <a  style="margin-left: 30px;color: #250d33"href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=INR">USD to INR</a><br>
+       <a style="margin-left: 30px;color: #250d33"href="https://www.xe.com/crm/">XE Currency Rate Monitor</a>
+     
+       <!-- Currency  Converter Script - FxExchangeRate.com  --><div style="align:right;margin-left: 30px;width:248px;height:auto;border:1px solid #2D6AB4;text-align:center;font-size:16px;font-family:sans-serif,Arial,Helvetica;border-top-right-radius:5px; border-top-left-radius:5px;background-color:#FFFFFF;"><div style="width:100%; height:24px;padding:5px 0px 0px 0px;background-color:#2D6AB4;font-weight:bold;"><a rel="nofollow" style="color:#FFFFFF;text-decoration:none;" href="https://www.fxexchangerate.com/">Currency Converter</a></div><script type="text/javascript" src="https://w.fxexchangerate.com/converter.php?fm=USD&ft=INR&lg=en&am=1&ty=1"></script></div><br><!--  End of Currency Converter Script -  FxExchangeRate.com -->
+     
+        <table >
+            <style>
+            input.box {
+                    height:30px;padding: 1px;width: 100px;    font-size: xx-large;    color: brown;
+                }
+                label.box {
+                    height:30px;padding: 1px;width: 2000px;color: #793433;border:10px;border-color:black;font-size: 30px;
+                    }
+                table {
+  border-collapse: collapse;
+  border: 1px;
+}
+            </style>
+            
+		<tr>
+            <td><label class="box">USD :</label></td><td>
+                <input class="box" type="text" id= "usd"></td></tr>
+        <tr><td><label class="box"> Rate :</label></td><td><input class="box" type="text" id= "rate" ></td></tr>
+        <tr><td><label class="box">Int. Rate :</label></td><td><input class="box" type="text" id= "arate"></td></tr>
+        <tr><td><label class="box">Int. To Usd Rate :</label></td><td><input class="box" type="text" id= "aurate"></td></tr>
+        <tr><td><label class="box">Route Rate India :</label></td><td><input class="box" type="text" id= "rratei"></td></tr>
+        <tr><td><label class="box">Route Rate Int. :</label> </td><td>  <input class="box" type="text" id= "rrateu"></td></tr>
+           
+        </table>
+        <br>
+            <input style="height:50px;width: 350px;font-size: 30px " type ="button" onclick="Check()" value="Check">
+        <br>
+            <div style="height:40px; font-size: 30px" id="output"></div>
+            <div style="height:40px; font-size: 30px" id="output2"></div>
+            <div style="height:40px; font-size: 30px" id="output3"></div>
+			<div style="height:40px; font-size: 30px" id="output4"></div>
+        <script charset="UTF-8">
+            
+            var output = document.getElementById("output");
+            var output3 = document.getElementById("output3");
+            var output2 = document.getElementById("output2");
+			var output4 = document.getElementById("output4");
+            var usd = document.getElementById("usd");
+            var rate = document.getElementById("rate");
+            var arate = document.getElementById("arate");
+            var aurate = document.getElementById("aurate");
+            var rratei = document.getElementById("rratei");
+            var rrateu = document.getElementById("rrateu");
+			var fxrate = document.getElementById("fxexchangerateResult");
+            usd.value= 1;
+            aurate.value= 3.67;
+            rratei.value= "0.0";
+            rrateu.value= "0.0";
+			
+        
+        function Check(){
+			
+            outc(usd.value,rratei.value,"/",function(a,b){
+                return a/b;
+               })
+                      
+            outm(rate.value,arate.value,aurate.value,rrateu.value,"/",function(a,b,c,d){
+                return a/b/c/d;
+				})
+				
+           output3.innerHTML=outn(usd.value,rratei.value,rate.value,arate.value,aurate.value,rrateu.value);
+		
+			pcolor(output3.innerHTML);     
+			getfxexchangerate();
+        }
+             
+        
+			function outc(a,b,s,cback){
+            var result = cback(Number(a),Number(b));
+            output.innerHTML ="Get "+result.toFixed(4) + "min in "+ usd.value +" $ By Local Supplier"+ "<br>";
+            return result
+			}
+       
+             function outm(a,b,c,d,s,cback){
+            var result = cback(Number(a),Number(b),Number(c),Number(d));
+            
+            output2.innerHTML = "Get "+result.toFixed(4) + "min in "+ usd.value +" $ By international Supplier"+ "<br>"; 
+			}
+		
+			function outn(a,b,c,d,e,f){
+				var result = (a/b)-(c/d/e/f);
+					if (result>0){return ("Loss of "+ result.toFixed(4) + " min");}
+					if (result<0){return ("Profit of "+ (result.toFixed(4)*(-1)) + " min");}
+				return "Same";
+			}
+			
+			function pcolor(a){
+			
+			if (a.charAt(0) == "L"){document.getElementById('output3').style.color = "red"﻿;}
+			if (a.charAt(0) == "P"){document.getElementById('output3').style.color = "#064a07"﻿;}
+			}
+			
+			function getfxexchangerate()
+			{var oc = $$("fxexchangerateFrom");
+			var oe = $$("fxexchangerateTo");
+			var c=oc.value;
+			var e=oe.value;
+			var d=$$("fxexchangerateAmount").value;
+			
+	  
+	  if(!IsNum(d)){return false}var ct = oc.options[oc.selectedIndex].text;
+	  var et = oe.options[oe.selectedIndex].text;
+	  result=d*fxrates[e]/fxrates[c];
+	  result =result.toFixed(4);
+	  $$("fxspanfm").innerHTML=$$("fxexchangerateFrom").options[$$("fxexchangerateFrom").selectedIndex].value;
+	  $$("fxexchangerateResult").innerHTML=result
+	  document.getElementById("rate").value=result;
+	  }	
+            </script>
+        
+     
+   
+    </body>
+</html>
