@@ -99,8 +99,8 @@ p {
                 return a/b;
                })
                       
-            outm(rate.value,arate.value,aurate.value,rrateu.value,"/",function(a,b,c,d){
-                return a/b/c/d;
+            outm(rate.value,arate.value,aurate.value,rrateu.value,usd.value,"/",function(a,b,c,d,e){
+                return (a/b/c/d)*e;
 				})
 				
            output3.innerHTML=outn(usd.value,rratei.value,rate.value,arate.value,aurate.value,rrateu.value);
@@ -116,14 +116,14 @@ p {
             return result
 			}
        
-             function outm(a,b,c,d,s,cback){
-            var result = cback(Number(a),Number(b),Number(c),Number(d));
+             function outm(a,b,c,d,e,s,cback){
+            var result = cback(Number(a),Number(b),Number(c),Number(d),Number(e));
             
             output2.innerHTML = "Get "+result.toFixed(4) + "min in "+ usd.value +" $ By international Supplier"+ "<br>"; 
 			}
 		
 			function outn(a,b,c,d,e,f){
-				var result = (a/b)-(c/d/e/f);
+				var result = (a/b)-(a*c/d/e/f);
 					if (result>0){return ("Loss of "+ result.toFixed(4) + " min");}
 					if (result<0){return ("Profit of "+ (result.toFixed(4)*(-1)) + " min");}
 				return "Same";
